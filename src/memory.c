@@ -17,15 +17,15 @@ typedef struct sMemBlockInfo
 {
     void                    *ptr;
     char                    *info;
-    UINT32                  size;
+    uint32_t                  size;
     struct  sMemBlockInfo   *next;
     struct  sMemBlockInfo   *prev;
 } sMemBlockInfo;
 
 sMemBlockInfo   memoryInfo;
-UINT32          memoryMaxAllocated;
-UINT32          currentAllocatedMemory;
-UINT32          maximumAllocatedMemory;
+uint32_t          memoryMaxAllocated;
+uint32_t          currentAllocatedMemory;
+uint32_t          maximumAllocatedMemory;
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -37,7 +37,7 @@ UINT32          maximumAllocatedMemory;
 //
 //
 //////////////////////////////////////////////////////////////////////////////
-void memory_addMemInfo(void *ptr, UINT32 size, char *info)
+void memory_addMemInfo(void *ptr, uint32_t size, char *info)
 {
     sMemBlockInfo   *alias;
 
@@ -83,7 +83,7 @@ void memory_init(void)
 //
 //
 //////////////////////////////////////////////////////////////////////////////
-void *memory_malloc(UINT32 size, char *info)
+void *memory_malloc(uint32_t size, char *info)
 {
     void *ptr;
 
@@ -108,7 +108,7 @@ void *memory_malloc(UINT32 size, char *info)
 //
 //
 //////////////////////////////////////////////////////////////////////////////
-void memory_malloc_secure(void **new_ptr, UINT32 size, char *info)
+void memory_malloc_secure(void **new_ptr, uint32_t size, char *info)
 {
     void *ptr;
 
@@ -137,7 +137,7 @@ void memory_malloc_secure(void **new_ptr, UINT32 size, char *info)
 void memory_memoryUsage(FILE *fp)
 {
     sMemBlockInfo   *alias;
-    UINT32 total=0;
+    uint32_t total=0;
 
     //fprintf(fp,"Memory usage:\n");
     alias=&memoryInfo;

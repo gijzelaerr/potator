@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-#include "../../common/sound.h"
-#include "../../common/memorymap.h"
-#include "../../common/supervision.h"
-#include "../../common/controls.h"
-#include "../../common/types.h"
+#include "sound.h"
+#include "memorymap.h"
+#include "supervision.h"
+#include "controls.h"
+#include "types.h"
 
 #include <SDL/SDL.h>
 
@@ -28,10 +28,16 @@ void loadROM(char* filename)
 		free(buffer);
 
 	FILE *romfile = fopen(filename, "rb");
-	
-	if (romfile == (FILE *)-1)
-		printf("fopen(): Unable to open file!\n");
 
+	if (!romfile) {
+		printf("No romfile specified!\n");
+		return;
+	}
+
+	if (romfile == (FILE *)-1) {
+		printf("fopen(): Unable to open file!\n");
+		return;
+	}
 	fseek(romfile, 0, SEEK_END);
 	buffer_size = ftell(romfile);
 	fseek(romfile, 0, SEEK_SET);
@@ -102,7 +108,7 @@ int main(int argc, char *argv[])
     
     if(argc <= 1) {
 		printf("\nnot enough arguments\n");
-		//return(TRUE);
+		return(TRUE);
 	} else {
 	
 		// the hard-core UI, a command line:
