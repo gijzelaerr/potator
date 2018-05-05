@@ -14,6 +14,8 @@
 /**     changes to this file.                               **/
 /*************************************************************/
 
+#include "m6502.h"
+
 /* This is M65C02 Version 1.4 of 2002.1220 -uso. */
 
 case 0x00:								/* BRK */
@@ -246,4 +248,4 @@ case 0xFE: MM_Ax(M_INC);break;            /* INC $ssss,x ABS,x */
 default:
   if(R->TrapBadOps)
     printf("[M65C02 %lX] Unrecognized instruction: $%02X at PC=$%04X\n",
-      R->User,Op6502(R->PC.W-1),(word)(R->PC.W-1));break;
+    (unsigned long)R->User,Op6502(R->PC.W-1),(word)(R->PC.W-1));break;

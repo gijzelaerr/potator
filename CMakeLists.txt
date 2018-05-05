@@ -37,7 +37,7 @@ add_executable(potator
         src/version.h
         src/watara.c
         src/main.c
-        )
+        src/m6502/defines.h)
 
 
 target_link_libraries(potator ${SDL_LIBRARY})
