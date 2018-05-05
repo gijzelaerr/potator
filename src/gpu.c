@@ -10,12 +10,12 @@ static uint8 gpu_regs[4];
 
 void gpu_init(void) {
     printf("Gpu Init\n");
-    fprintf(log_get(), "gpu: init\n");
+    printf( "gpu: init\n");
     memory_malloc_secure((void **) &supervision_palette, 4 * sizeof(int16), "Palette");
 }
 
 void gpu_done(void) {
-    fprintf(log_get(), "gpu: done\n");
+    printf( "gpu: done\n");
 }
 
 

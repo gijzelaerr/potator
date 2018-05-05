@@ -4,16 +4,16 @@
 static uint8 io_data;
 
 void io_init(void) {
-    fprintf(log_get(), "io: init\n");
+    printf( "io: init\n");
 }
 
 void io_reset(void) {
-    fprintf(log_get(), "io: reset\n");
+    printf( "io: reset\n");
     io_data = 0x00;
 }
 
 void io_done(void) {
-    fprintf(log_get(), "io: done\n");
+    printf( "io: done\n");
 }
 
 void io_write(uint32 addr, uint8 data) {

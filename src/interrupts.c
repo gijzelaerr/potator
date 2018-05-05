@@ -3,15 +3,15 @@
 #include "interrupts.h"
 
 void interrupts_init() {
-    fprintf(log_get(), "interrupts init\n");
+    printf( "interrupts init\n");
 }
 
 void interrupts_reset() {
-    fprintf(log_get(), "interrupts reset\n");
+    printf( "interrupts reset\n");
 }
 
 void interrupts_done() {
-    fprintf(log_get(), "interrupts done\n");
+    printf( "interrupts done\n");
 }
 
 void interrupts_write(uint32 Addr, uint8 data) {

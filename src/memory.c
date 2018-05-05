@@ -56,10 +56,10 @@ void *memory_malloc(uint32_t size, char *info) {
 void memory_malloc_secure(void **new_ptr, uint32_t size, char *info) {
     void *ptr;
 
-    //fprintf(log_get(),"memory: allocating %i bytes of memory for <%s>...",size,(info==NULL)?"unknown":info);
+    //printf("memory: allocating %i bytes of memory for <%s>...",size,(info==NULL)?"unknown":info);
     ptr = (void *) malloc(size);
     if (ptr == NULL) {
-        //fprintf(log_get(),"failed\n");
+        //printf("failed\n");
         //log_done();
         exit(0);
     }
@@ -68,7 +68,7 @@ void memory_malloc_secure(void **new_ptr, uint32_t size, char *info) {
     if (currentAllocatedMemory > maximumAllocatedMemory)
         maximumAllocatedMemory = currentAllocatedMemory;
     *new_ptr = ptr;
-    //fprintf(log_get(),"ok\n");
+    //printf("ok\n");
 }
 
 void memory_memoryUsage(FILE *fp) {

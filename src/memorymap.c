@@ -1,5 +1,6 @@
 
 #include "memorymap.h"
+#include "sound.h"
 #include <string.h>
 
 uint8 *memorymap_programRom;
@@ -18,7 +19,7 @@ uint8 *memorymap_getRomPointer(void) {
 
 
 void memorymap_init() {
-    //fprintf(log_get(), "memorymap: init\n");
+    //printf( "memorymap: init\n");
     memory_malloc_secure((void **) &memorymap_lowerRam, 0x2000, "Lower ram");
     memory_malloc_secure((void **) &memorymap_upperRam, 0x2000, "Upper ram");
     memory_malloc_secure((void **) &memorymap_regs, 0x2000, "Internal registers");
@@ -27,12 +28,12 @@ void memorymap_init() {
 
 
 void memorymap_done() {
-    //fprintf(log_get(), "memorymap: done\n");
+    //printf( "memorymap: done\n");
 }
 
 
 void memorymap_reset() {
-    //fprintf(log_get(), "memorymap: reset\n");
+    //printf( "memorymap: reset\n");
     memorymap_lowerRomBank = memorymap_programRom + 0x0000;
     memorymap_upperRomBank = memorymap_programRom + (memorymap_programRomSize == 0x10000 ? 0xc000 : 0x4000);
 
@@ -80,11 +81,11 @@ void memorymap_registers_write(uint32 Addr, uint8 Value) {
             timer_write(Addr, Value);
             break;
         case 0x26:
-            //fprintf(log_get(), "memorymap: writing 0x%.2x to rom bank register\n", Value);
+            //printf( "memorymap: writing 0x%.2x to rom bank register\n", Value);
             memorymap_lowerRomBank = memorymap_programRom + ((((uint32) Value) & 0x60) << 9);
             memorymap_upperRomBank = memorymap_programRom + (memorymap_programRomSize == 0x10000 ? 0xc000 : 0x4000);
             return;
-        case 0x27:    //fprintf(log_get(), "regs: writing 0x%.2x from 0x%.4x\n", Value, Addr);
+        case 0x27:    //printf( "regs: writing 0x%.2x from 0x%.4x\n", Value, Addr);
             break;
         case 0x10:
         case 0x11:

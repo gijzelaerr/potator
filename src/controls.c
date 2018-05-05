@@ -6,15 +6,15 @@ uint8 controls_state;
 
 
 void controls_init() {
-    fprintf(log_get(), "controls: init\n");
+    printf( "controls: init\n");
 }
 
 void controls_done() {
-    fprintf(log_get(), "controls: done\n");
+    printf( "controls: done\n");
 }
 
 void controls_reset() {
-    fprintf(log_get(), "controls: reset\n");
+    printf( "controls: reset\n");
     controls_state = 0x00;
 }
 

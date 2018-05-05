@@ -22,4 +22,10 @@ void sound_exec(uint32 cycles);
 
 void audio_turnSound(BOOL bOn);
 
+void soundport_w(int which, int offset, int data);
+
+void svision_noise_w(int offset, int data);
+
+void svision_sounddma_w(int offset, int data);
+
 #endif
